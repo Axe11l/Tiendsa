@@ -1,0 +1,108 @@
+<?php include 'config.php'; ?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Tienda de Ropa</title>
+
+    <!-- CDN de Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0c0c0c;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+        .form-container input, .form-container textarea {
+            border: 1px solid #333;
+        }
+        .form-container input:focus, .form-container textarea:focus {
+            border-color: #00ffcc;
+            box-shadow: 0 0 0 1px #00ffcc;
+        }
+        .form-container button {
+            background-color: #00cc99;
+        }
+        .form-container button:hover {
+            background-color: #00ffcc;
+        }
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+        .success-message, .error-message {
+            margin-top: 1rem;
+        }
+        .success-message {
+            color: #00ffcc;
+        }
+        .error-message {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-black bg-opacity-60 text-white py-6 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">Tienda de Ropa</h1>
+            <nav class="space-x-4">
+                <a href="index.php" class="text-teal-400 hover:text-white transition">Inicio</a>
+                <a href="sobre.php" class="text-teal-400 hover:text-white transition">Sobre Nosotros</a>
+                <a href="productos.php" class="text-teal-400 hover:text-white transition">Productos</a>
+                <a href="blog.php" class="text-teal-400 hover:text-white transition">Blog</a>
+                <a href="contacto.php" class="text-teal-400 hover:text-white transition">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="form-container mx-auto max-w-2xl p-6 bg-white shadow-lg rounded-lg mt-10">
+            <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Contacto</h1>
+            <form action="contacto.php" method="post" class="space-y-6">
+                <input type="text" name="nombre" placeholder="Tu Nombre" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="email" name="email" placeholder="Tu Email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <textarea name="mensaje" placeholder="Tu Mensaje" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-32"></textarea>
+                <input type="submit" name="enviar" value="Enviar" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 cursor-pointer">
+            </form>
+
+            <?php
+            if (isset($_POST['enviar'])) {
+                $nombre = $_POST['nombre'];
+                $email = $_POST['email'];
+                $mensaje = $_POST['mensaje'];
+                
+                $sql = "INSERT INTO mensajes (nombre, email, mensaje) VALUES ('$nombre', '$email', '$mensaje')";
+                if ($conn->query($sql) === TRUE) {
+                    echo "<p class='success-message'>Mensaje enviado con éxito.</p>";
+                } else {
+                    echo "<p class='error-message'>Error: " . $sql . "<br>" . $conn->error . "</p>";
+                }
+            }
+            ?>
+        </div>
+
+        <!-- Sección de Mapa -->
+        <div class="map-container mt-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Encuéntranos</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1607.5999142817118!2d-87.18243857519717!3d14.06532183210066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6fbcdf158be3fb%3A0xc661158a9cf0ad99!2sInstituto%20Gubernamental%20Espa%C3%B1a%20%22Jes%C3%BAs%20Milla%20Selva%22!5e0!3m2!1ses-419!2shn!4v1725165644516!5m2!1ses-419!2shn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></iframe>
+        </div>
+    </main>
+
+    <?php include 'includes/footer.php'; ?>
+</body>
+</html>

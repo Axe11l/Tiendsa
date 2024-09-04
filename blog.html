@@ -1,0 +1,109 @@
+<?php include 'config.php'; ?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Moda - Tienda de Ropa</title>
+
+    <!-- CDN de Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0c0c0c;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+        }
+        .post-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .post-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+        }
+        .post-card img {
+            border-bottom: 1px solid #333;
+        }
+        .post-card h2 {
+            color: #00ffcc;
+        }
+        .post-card a {
+            color: #00cc99;
+        }
+        .post-card a:hover {
+            color: #00ffcc;
+            text-decoration: underline;
+        }
+        .more-articles h3 {
+            color: #00ffcc;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-black bg-opacity-60 text-white py-6 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">Tienda de Ropa</h1>
+            <nav class="space-x-4">
+                <a href="index.php" class="text-teal-400 hover:text-white transition">Inicio</a>
+                <a href="sobre.php" class="text-teal-400 hover:text-white transition">Sobre Nosotros</a>
+                <a href="productos.php" class="text-teal-400 hover:text-white transition">Productos</a>
+                <a href="blog.php" class="text-teal-400 hover:text-white transition">Blog</a>
+                <a href="contacto.php" class="text-teal-400 hover:text-white transition">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="content mx-auto max-w-4xl p-6 bg-white shadow-lg rounded-lg mt-10">
+            <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Blog de Moda</h1>
+            
+            <div class="post-card border-b border-gray-200 pb-6 mb-8">
+                <img src="images/imagen2.jpg" alt="Tendencias de Moda para la Temporada 2024" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">Tendencias de Moda para la Temporada 2024</h2>
+                    <p class="text-sm text-gray-500 mb-4">Publicado el 15 de Enero, 2024</p>
+                    <p class="text-gray-600 mb-4">Descubre las últimas tendencias en moda para el 2024. Colores vibrantes, estampados florales y mucho más.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-700 hover:underline">Leer más...</a>
+                </div>
+            </div>
+
+            <div class="post-card border-b border-gray-200 pb-6 mb-8">
+                <img src="images/imagen3.jpeg" alt="Cómo Elegir el Atuendo Perfecto para una Entrevista de Trabajo" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">Cómo Elegir el Atuendo Perfecto para una Entrevista de Trabajo</h2>
+                    <p class="text-sm text-gray-500 mb-4">Publicado el 28 de Diciembre, 2023</p>
+                    <p class="text-gray-600 mb-4">Seleccionar el atuendo adecuado puede marcar la diferencia en una entrevista. Aquí te damos algunos consejos clave.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-700 hover:underline">Leer más...</a>
+                </div>
+            </div>
+
+            <div class="post-card border-b border-gray-200 pb-6 mb-8">
+                <img src="images/imagen4.jpg" alt="5 Accesorios que No Pueden Faltar en tu Armario" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">5 Accesorios que No Pueden Faltar en tu Armario</h2>
+                    <p class="text-sm text-gray-500 mb-4">Publicado el 10 de Noviembre, 2023</p>
+                    <p class="text-gray-600 mb-4">Los accesorios son la clave para completar cualquier look. Te presentamos cinco opciones que no puedes perderte.</p>
+                    <a href="#" class="text-blue-500 hover:text-blue-700 hover:underline">Leer más...</a>
+                </div>
+            </div>
+
+            <!-- Sección de Más Artículos -->
+            <div class="more-articles mt-12">
+                <h3 class="text-3xl font-bold text-gray-800 mb-6">Más Artículos</h3>
+                <ul class="list-disc pl-5 space-y-3 text-gray-600">
+                    <li><a href="#" class="text-blue-500 hover:text-blue-700 hover:underline">10 Consejos para Combinar Colores en tu Ropa</a></li>
+                    <li><a href="#" class="text-blue-500 hover:text-blue-700 hover:underline">Cómo Cuidar y Mantener tus Prendas de Moda</a></li>
+                    <li><a href="#" class="text-blue-500 hover:text-blue-700 hover:underline">Los Mejores Looks para el Invierno 2024</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <?php include 'includes/footer.php'; ?>
+</body>
+</html>

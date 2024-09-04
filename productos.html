@@ -1,0 +1,128 @@
+<?php include 'config.php'; ?>
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Productos - Tienda de Ropa</title>
+
+    <!-- CDN de Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0c0c0c;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+        }
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 255, 204, 0.5);
+        }
+        .product-card img {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .buy-button {
+            background: linear-gradient(135deg, #00ffcc, #00cc99);
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+            font-weight: bold;
+        }
+        .buy-button:hover {
+            background-color: #00cc99;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-black bg-opacity-60 text-white py-6 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">Tienda de Ropa</h1>
+            <nav class="space-x-4">
+                <a href="index.php" class="text-teal-400 hover:text-white transition">Inicio</a>
+                <a href="sobre.php" class="text-teal-400 hover:text-white transition">Sobre Nosotros</a>
+                <a href="productos.php" class="text-teal-400 hover:text-white transition">Productos</a>
+                <a href="blog.php" class="text-teal-400 hover:text-white transition">Blog</a>
+                <a href="contacto.php" class="text-teal-400 hover:text-white transition">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="relative z-10 py-12">
+        <div class="container mx-auto px-4 py-8">
+            <h1 class="text-4xl font-bold text-center text-gray-100 mb-8">Nuestros Productos</h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Producto 1 -->
+                <div class="product-card shadow-lg rounded-lg overflow-hidden">
+                    <img src="images/imagen9.jpg" alt="Camiseta Casual" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h2 class="text-xl font-semibold mb-2">Camiseta Casual</h2>
+                        <p class="text-gray-300 mb-4">Cómoda camiseta de algodón perfecta para uso diario.</p>
+                        <p class="text-lg font-bold mb-4"><strong>Precio:</strong> 400 L</p>
+                        <!-- Formulario para agregar al carrito -->
+                        <form action="agregar_carrito.php" method="post" class="flex justify-center">
+                            <input type="hidden" name="producto_id" value="1">
+                            <input type="hidden" name="nombre_producto" value="Camiseta Casual">
+                            <input type="hidden" name="precio" value="15.99">
+                            <button type="submit" class="buy-button">
+                                Agregar al carrito
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card shadow-lg rounded-lg overflow-hidden">
+                    <img src="images/imagen8.jpg" alt="Jeans Ajustados" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h2 class="text-xl font-semibold mb-2">Jeans Baggy</h2>
+                        <p class="text-gray-300 mb-4">Jeans baggy de mezclilla con un diseño moderno y elegante.</p>
+                        <p class="text-lg font-bold mb-4"><strong>Precio:</strong> 300 L</p>
+                        <form action="agregar_carrito.php" method="post" class="flex justify-center">
+                            <input type="hidden" name="producto_id" value="2">
+                            <input type="hidden" name="nombre_producto" value="Jeans Ajustados">
+                            <input type="hidden" name="precio" value="39.99">
+                            <button type="submit" class="buy-button">
+                                Agregar al carrito
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-card shadow-lg rounded-lg overflow-hidden">
+                    <img src="images/imagen10.jpg" alt="Chaqueta de Cuero" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h2 class="text-xl font-semibold mb-2">Chaqueta de Cuero</h2>
+                        <p class="text-gray-300 mb-4">Elegante chaqueta de cuero para un look sofisticado.</p>
+                        <p class="text-lg font-bold mb-4"><strong>Precio:</strong> 500 L</p>
+                        <form action="agregar_carrito.php" method="post" class="flex justify-center">
+                            <input type="hidden" name="producto_id" value="3">
+                            <input type="hidden" name="nombre_producto" value="Chaqueta de Cuero">
+                            <input type="hidden" name="precio" value="89.99">
+                            <button type="submit" class="buy-button">
+                                Agregar al carrito
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <?php include 'includes/footer.php'; ?>
+</body>
+</html>
